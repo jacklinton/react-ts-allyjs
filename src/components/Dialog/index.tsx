@@ -1,3 +1,4 @@
+import Disabled from "ally.js/esm/maintain/disabled";
 import * as React from "react";
 
 import "./styles.css";
@@ -9,8 +10,13 @@ interface IProps {
   close(): void;
 }
 
-class Dialog extends React.Component<IProps> {
+interface IHandle {
+  disengage(): void;
+}
+
+class Dialog extends React.Component<IProps, {}> {
   public dialog: HTMLElement | null;
+  public disabledHandle: IHandle;
 
   public render() {
     return (
@@ -49,6 +55,16 @@ class Dialog extends React.Component<IProps> {
         </div>
       </div>
     )
+  }
+
+  public componentDidMount() {
+    this.disabledHandle = Disabled({
+      filter: this.dialog,
+    });
+  }
+
+  public componentWillUnmount() {
+    this.disabledHandle.disengage();
   }
 }
 
