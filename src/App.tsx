@@ -1,4 +1,7 @@
 import * as React from 'react';
+import Button from "./components/Button";
+import Dialog from "./components/Dialog";
+
 import './App.css';
 
 interface IAppState {
@@ -16,6 +19,46 @@ class App extends React.Component<{}, IAppState> {
     };
   }
 
+  public checkForDialog() {
+    if (this.state.showDialog) {
+      return this.getDialog();
+    } else {
+      return false;
+    }
+  }
+
+  public getDialog() {
+    return (
+      <Dialog
+        title="Favourite Holiday Dialog"
+        description="Add your favourite holiday to the list"
+        close={() => { this.toggleDialog(); }}
+      >
+        <form className="dialog-content">
+          <header>
+            <h1 id="dialog-title">Holiday Entry</h1>
+            <p id="dialog-description">Please enter your favourite holiday.</p>
+          </header>
+          <section>
+            <div className="field-container">
+              <label htmlFor="within-dialog">Favourite Holiday</label>
+              <input id="within-dialog" />
+            </div>
+          </section>
+          <footer>
+            <div className="btns-container">
+              <Button
+                type="primary"
+                clickHandler={() => { this.toggleDialog(); }}
+                msg="Save"
+              />
+            </div>
+          </footer>
+        </form>
+      </Dialog>
+    );
+  }
+
   public toggleDialog = () => {
     this.setState({ showDialog: !this.state.showDialog })
   };
@@ -23,6 +66,7 @@ class App extends React.Component<{}, IAppState> {
   public render() {
     return (
       <div className="site-container">
+        {this.checkForDialog()}
         <header>
           <h1>Ally.js with React &amp; Typescript</h1>
         </header>
