@@ -11,14 +11,14 @@ interface IProps {
 }
 
 const Button: React.SFC<IProps> = (props) => {
-  const clickHandler = props.clickHandler ? props.clickHandler : () => {return null; };
+  const clickHandler = props.clickHandler ? props.clickHandler : () =>null;
 
   return (
     <button
       className={`btn ${props.type} ${props.classlist || ''}`}
       tabIndex={0}
       title={props.title}
-      onClick={() => clickHandler()}
+      onClick={clickHandler}
     >
       {props.msg}
     </button>

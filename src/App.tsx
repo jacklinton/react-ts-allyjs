@@ -32,7 +32,7 @@ class App extends React.Component<{}, IAppState> {
       <Dialog
         title="Favourite Holiday Dialog"
         description="Add your favourite holiday to the list"
-        close={() => { this.toggleDialog(); }}
+        close={this.toggleDialog}
       >
         <form className="dialog-content">
           <header>
@@ -49,7 +49,7 @@ class App extends React.Component<{}, IAppState> {
             <div className="btns-container">
               <Button
                 type="primary"
-                clickHandler={() => { this.toggleDialog(); }}
+                clickHandler={this.toggleDialog}
                 msg="Save"
               />
             </div>
