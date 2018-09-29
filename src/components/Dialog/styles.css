@@ -1,0 +1,35 @@
+.popup-outer-container {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.popup-inner-container {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 3px rgba(119, 119, 119, 0.35);
+    max-width: 750px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.popup-inner-container:focus-within {
+    outline: -webkit-focus-ring-color auto 2px;
+}
+
+.close-icon {
+    background: transparent;
+    color: #6e6e6e;
+    cursor: pointer;
+    font: 2rem/1 sans-serif;
+    position: absolute;
+    right: 20px;
+    top: 1rem;
+}
